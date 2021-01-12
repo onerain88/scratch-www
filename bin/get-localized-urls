@@ -17,7 +17,7 @@ if (!args.length) {
 }
 var filename = path.resolve(__dirname, 'lib', args.shift());
 
-https.get('https://resources.scratch.mit.edu/localized-urls.json', (res) => {
+https.get('https://github.com/onerain88/scratch-www/tree/develop/bin/localized-urls.json', (res) => {
     var statusCode = res && res.statusCode;
 
     var error;
