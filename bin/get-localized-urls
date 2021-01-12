@@ -8,10 +8,6 @@ var https = require('https');
 var fs = require('fs');
 var path = require('path');
 var urlData = '';
-const HttpsProxyAgent = require('https-proxy-agent');
-
-const proxy = 'http://127.0.0.1:7890';
-const agent = new HttpsProxyAgent(proxy);
 
 var args = process.argv.slice(2);
 
@@ -21,17 +17,7 @@ if (!args.length) {
 }
 var filename = path.resolve(__dirname, 'lib', args.shift());
 
-const options = {
-    host: 'resources.scratch.mit.edu',
-	port: '443',
-    path: '/localized-urls.json',
-    method: 'GET',
-    agent: agent
-};
-
-// const url = 'https://resources.scratch.mit.edu/localized-urls.json';
-
-https.get(options, (res) => {
+https.get('https://resources.scratch.mit.edu/localized-urls.json', (res) => {
     var statusCode = res && res.statusCode;
 
     var error;
